@@ -1,7 +1,7 @@
 // import modules
 
 import express from 'express'
-
+import { list } from './data/list-data.js'
 // create Express app
 
 const app = express()
@@ -18,13 +18,18 @@ app.set('view engine', 'ejs')
 
 
 app.get('/', function(req, res) {
-    res.send('<h1>hello, friend</h1>')
+    res.send('<h1>hello, pizza</h1>')
   })
 
   app.get('/pizza', function(req, res) {
-    res.render('pizza')
+    res.render('pizza-page')
   })
 
+  app.get('/list', function(req, res) {
+    res.render('list/index', {
+      list: list
+    })
+  })
 
 
 // tell the app to listen on port 3000
